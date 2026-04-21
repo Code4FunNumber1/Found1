@@ -54,7 +54,7 @@ public class AnimationDemoScreen implements Screen {
         slimAnim = new Animation<>(0.15f, eGrid[0]);
         slimAnim.setPlayMode(Animation.PlayMode.LOOP);
 
-        coinSheet = new Texture("enemy-slime.png");
+        coinSheet = new Texture("coin.png");
         TextureRegion[][] cGrid = TextureRegion.split(coinSheet, 32, 32);
         coinAnim = new Animation<>(0.08f, cGrid[0]);
         coinAnim.setPlayMode(Animation.PlayMode.LOOP);
@@ -68,14 +68,14 @@ public class AnimationDemoScreen implements Screen {
 
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             state = PlayerState.JUMPING;
-        } else if (Gdx.input.isButtonPressed(Input.Keys.D)) {
+        } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             state = PlayerState.RUNNING;
             facingRight = true;
             playerX += 100 * delta;
-        } else if (Gdx.input.isButtonPressed(Input.Keys.A)) {
+        } else if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             state = PlayerState.RUNNING;
             facingRight = false;
-            playerX += 100 * delta;
+            playerX -= 100 * delta;
         } else {
             state = PlayerState.IDLE;
         }
